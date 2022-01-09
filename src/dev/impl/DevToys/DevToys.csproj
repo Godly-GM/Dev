@@ -21,12 +21,12 @@
     <Compile Include="..\..\shared\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Api\Core\OOP\IAppService.cs" />
     <Compile Include="Api\Tools\MenuPlacement.cs" />
     <Compile Include="Api\Tools\NoCompactOverlaySupportAttribute.cs" />
     <Compile Include="Api\Tools\NotSearchableAttribute.cs" />
     <Compile Include="Api\Tools\ParentAttribute.cs" />
-    <Compile Include="Core\OOP\AppService.cs" />
+    <Compile Include="Core\Extension.cs" />
+    <Compile Include="Core\ExtensionManager.cs" />
     <Compile Include="Core\Threading\AsyncLazy.cs" />
     <Compile Include="Helpers\NumberBaseHelper.cs" />
     <Compile Include="Messages\PinToolToStartMessage.cs" />
@@ -52,9 +52,6 @@
     <Compile Include="ViewModels\Tools\GroupToolViewModel.cs" />
     <Compile Include="ViewModels\Tools\EncodersDecoders\HtmlEncoderDecoder\HtmlEncoderDecoderToolProvider.cs" />
     <Compile Include="ViewModels\Tools\EncodersDecoders\HtmlEncoderDecoder\HtmlEncoderDecoderToolViewModel.cs" />
-    <Compile Include="ViewModels\Tools\Graphic\PngJpgCompressor\ImageCompressionWorkItem.cs" />
-    <Compile Include="ViewModels\Tools\Graphic\PngJpgCompressor\PngJpgCompressorToolProvider.cs" />
-    <Compile Include="ViewModels\Tools\Graphic\PngJpgCompressor\PngJpgCompressorToolViewModel.cs" />
     <Compile Include="ViewModels\Tools\Formatters\FormattersGroupToolProvider.cs" />
     <Compile Include="ViewModels\Tools\GroupToolViewModelBase.cs" />
     <Compile Include="ViewModels\Tools\SearchResult\SearchResultToolProvider.cs" />
@@ -71,132 +68,59 @@
     <Compile Include="Views\Tools\HtmlEncoderDecoder\HtmlEncoderDecoderToolPage.xaml.cs">
       <DependentUpon>HtmlEncoderDecoderToolPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Tools\PngJpgCompressor\PngJpgCompressorToolPage.xaml.cs">
-      <DependentUpon>PngJpgCompressorToolPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Tools\URLEncoderDecoder\UrlEncoderDecoderToolPage.xaml.cs">
       <DependentUpon>UrlEncoderDecoderToolPage.xaml</DependentUpon>
     </Compile>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\SplashScreen.scale-100.png">
-      <Link>Assets\Logo\SplashScreen.scale-100.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\SplashScreen.scale-125.png">
-      <Link>Assets\Logo\SplashScreen.scale-125.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\SplashScreen.scale-150.png">
-      <Link>Assets\Logo\SplashScreen.scale-150.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\SplashScreen.scale-200.png">
-      <Link>Assets\Logo\SplashScreen.scale-200.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\SplashScreen.scale-400.png">
-      <Link>Assets\Logo\SplashScreen.scale-400.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square150x150Logo.scale-100.png">
-      <Link>Assets\Logo\Square150x150Logo.scale-100.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square150x150Logo.scale-125.png">
-      <Link>Assets\Logo\Square150x150Logo.scale-125.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square150x150Logo.scale-150.png">
-      <Link>Assets\Logo\Square150x150Logo.scale-150.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square150x150Logo.scale-200.png">
-      <Link>Assets\Logo\Square150x150Logo.scale-200.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square150x150Logo.scale-400.png">
-      <Link>Assets\Logo\Square150x150Logo.scale-400.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square44x44Logo.altform-lightunplated_targetsize-16.png">
-      <Link>Assets\Logo\Square44x44Logo.altform-lightunplated_targetsize-16.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square44x44Logo.altform-lightunplated_targetsize-24.png">
-      <Link>Assets\Logo\Square44x44Logo.altform-lightunplated_targetsize-24.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square44x44Logo.altform-lightunplated_targetsize-256.png">
-      <Link>Assets\Logo\Square44x44Logo.altform-lightunplated_targetsize-256.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square44x44Logo.altform-lightunplated_targetsize-32.png">
-      <Link>Assets\Logo\Square44x44Logo.altform-lightunplated_targetsize-32.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square44x44Logo.altform-lightunplated_targetsize-48.png">
-      <Link>Assets\Logo\Square44x44Logo.altform-lightunplated_targetsize-48.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square44x44Logo.altform-unplated_targetsize-16.png">
-      <Link>Assets\Logo\Square44x44Logo.altform-unplated_targetsize-16.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square44x44Logo.altform-unplated_targetsize-24.png">
-      <Link>Assets\Logo\Square44x44Logo.altform-unplated_targetsize-24.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square44x44Logo.altform-unplated_targetsize-256.png">
-      <Link>Assets\Logo\Square44x44Logo.altform-unplated_targetsize-256.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square44x44Logo.altform-unplated_targetsize-32.png">
-      <Link>Assets\Logo\Square44x44Logo.altform-unplated_targetsize-32.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square44x44Logo.altform-unplated_targetsize-48.png">
-      <Link>Assets\Logo\Square44x44Logo.altform-unplated_targetsize-48.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square44x44Logo.scale-100.png">
-      <Link>Assets\Logo\Square44x44Logo.scale-100.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square44x44Logo.scale-125.png">
-      <Link>Assets\Logo\Square44x44Logo.scale-125.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square44x44Logo.scale-150.png">
-      <Link>Assets\Logo\Square44x44Logo.scale-150.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square44x44Logo.scale-200.png">
-      <Link>Assets\Logo\Square44x44Logo.scale-200.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square44x44Logo.scale-400.png">
-      <Link>Assets\Logo\Square44x44Logo.scale-400.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square44x44Logo.targetsize-16.png">
-      <Link>Assets\Logo\Square44x44Logo.targetsize-16.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square44x44Logo.targetsize-24.png">
-      <Link>Assets\Logo\Square44x44Logo.targetsize-24.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square44x44Logo.targetsize-256.png">
-      <Link>Assets\Logo\Square44x44Logo.targetsize-256.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square44x44Logo.targetsize-32.png">
-      <Link>Assets\Logo\Square44x44Logo.targetsize-32.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Square44x44Logo.targetsize-48.png">
-      <Link>Assets\Logo\Square44x44Logo.targetsize-48.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\StoreLogo.scale-100.png">
-      <Link>Assets\Logo\StoreLogo.scale-100.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\StoreLogo.scale-125.png">
-      <Link>Assets\Logo\StoreLogo.scale-125.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\StoreLogo.scale-150.png">
-      <Link>Assets\Logo\StoreLogo.scale-150.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\StoreLogo.scale-200.png">
-      <Link>Assets\Logo\StoreLogo.scale-200.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\StoreLogo.scale-400.png">
-      <Link>Assets\Logo\StoreLogo.scale-400.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Wide310x150Logo.scale-100.png">
-      <Link>Assets\Logo\Wide310x150Logo.scale-100.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Wide310x150Logo.scale-125.png">
-      <Link>Assets\Logo\Wide310x150Logo.scale-125.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Wide310x150Logo.scale-150.png">
-      <Link>Assets\Logo\Wide310x150Logo.scale-150.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Wide310x150Logo.scale-200.png">
-      <Link>Assets\Logo\Wide310x150Logo.scale-200.png</Link>
-    </Content>
-    <Content Include="..\..\DevToys.Startup\Assets\Logo-Prev\Wide310x150Logo.scale-400.png">
-      <Link>Assets\Logo\Wide310x150Logo.scale-400.png</Link>
-    </Content>
+    <Content Include="Assets\Logo-Prev\LargeTile.scale-100.png" />
+    <Content Include="Assets\Logo-Prev\LargeTile.scale-125.png" />
+    <Content Include="Assets\Logo-Prev\LargeTile.scale-150.png" />
+    <Content Include="Assets\Logo-Prev\LargeTile.scale-200.png" />
+    <Content Include="Assets\Logo-Prev\LargeTile.scale-400.png" />
+    <Content Include="Assets\Logo-Prev\SmallTile.scale-100.png" />
+    <Content Include="Assets\Logo-Prev\SmallTile.scale-125.png" />
+    <Content Include="Assets\Logo-Prev\SmallTile.scale-150.png" />
+    <Content Include="Assets\Logo-Prev\SmallTile.scale-200.png" />
+    <Content Include="Assets\Logo-Prev\SmallTile.scale-400.png" />
+    <Content Include="Assets\Logo-Prev\SplashScreen.scale-100.png" />
+    <Content Include="Assets\Logo-Prev\SplashScreen.scale-125.png" />
+    <Content Include="Assets\Logo-Prev\SplashScreen.scale-150.png" />
+    <Content Include="Assets\Logo-Prev\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Logo-Prev\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Logo-Prev\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Logo-Prev\Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\Logo-Prev\Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\Logo-Prev\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Logo-Prev\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Logo-Prev\Square44x44Logo.altform-lightunplated_targetsize-16.png" />
+    <Content Include="Assets\Logo-Prev\Square44x44Logo.altform-lightunplated_targetsize-24.png" />
+    <Content Include="Assets\Logo-Prev\Square44x44Logo.altform-lightunplated_targetsize-256.png" />
+    <Content Include="Assets\Logo-Prev\Square44x44Logo.altform-lightunplated_targetsize-32.png" />
+    <Content Include="Assets\Logo-Prev\Square44x44Logo.altform-lightunplated_targetsize-48.png" />
+    <Content Include="Assets\Logo-Prev\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Content Include="Assets\Logo-Prev\Square44x44Logo.altform-unplated_targetsize-24.png" />
+    <Content Include="Assets\Logo-Prev\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Include="Assets\Logo-Prev\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Content Include="Assets\Logo-Prev\Square44x44Logo.altform-unplated_targetsize-48.png" />
+    <Content Include="Assets\Logo-Prev\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Logo-Prev\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\Logo-Prev\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\Logo-Prev\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Logo-Prev\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Logo-Prev\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Logo-Prev\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Logo-Prev\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Logo-Prev\Square44x44Logo.targetsize-32.png" />
+    <Content Include="Assets\Logo-Prev\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\Logo-Prev\StoreLogo.scale-100.png" />
+    <Content Include="Assets\Logo-Prev\StoreLogo.scale-125.png" />
+    <Content Include="Assets\Logo-Prev\StoreLogo.scale-150.png" />
+    <Content Include="Assets\Logo-Prev\StoreLogo.scale-200.png" />
+    <Content Include="Assets\Logo-Prev\StoreLogo.scale-400.png" />
+    <Content Include="Assets\Logo-Prev\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\Logo-Prev\Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\Logo-Prev\Wide310x150Logo.scale-150.png" />
+    <Content Include="Assets\Logo-Prev\Wide310x150Logo.scale-200.png" />
+    <Content Include="Assets\Logo-Prev\Wide310x150Logo.scale-400.png" />
     <Content Include="Assets\DemoSmartDetection.gif" />
     <Content Include="Assets\GitHubMarkdownCss\github-markdown-dark.css" />
     <Content Include="Assets\GitHubMarkdownCss\github-markdown-light.css" />
@@ -517,10 +441,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Tools\MarkdownPreview\MarkdownPreviewToolPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Tools\PngJpgCompressor\PngJpgCompressorToolPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

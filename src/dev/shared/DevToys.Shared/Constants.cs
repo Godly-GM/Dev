@@ -5,15 +5,15 @@ using Newtonsoft.Json;
 
 namespace DevToys.Shared
 {
-    internal static class Constants
+    public static class Constants
     {
-        internal const string AppServiceName = "DevToysOOPService";
+        public const string AppServiceName = "DevToysOOPService";
 
-        internal const int AppServiceBufferSize = 2048;
+        public const int AppServiceBufferSize = 2048;
 
-        internal static readonly TimeSpan AppServiceTimeout = TimeSpan.FromSeconds(10);
+        public static readonly TimeSpan AppServiceTimeout = TimeSpan.FromSeconds(10);
 
-        internal static readonly JsonSerializerSettings AppServiceJsonSerializerSettings 
+        public static readonly JsonSerializerSettings AppServiceJsonSerializerSettings 
             = new()
             {
                 TypeNameHandling = TypeNameHandling.All,

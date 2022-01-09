@@ -8,6 +8,6 @@ namespace DevToys.Shared.Core.OOP
     public abstract class AppServiceMessageBase
     {
         [JsonProperty]
-        internal Guid? MessageId { get; set; }
+        public Guid? MessageId { get; set; }
     }
 }

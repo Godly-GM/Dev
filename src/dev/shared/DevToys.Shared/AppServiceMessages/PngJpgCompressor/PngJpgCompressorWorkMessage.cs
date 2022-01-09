@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 
 namespace DevToys.Shared.AppServiceMessages.PngJpgCompressor
 {
-    internal sealed class PngJpgCompressorWorkMessage : AppServiceMessageBase
+    public sealed class PngJpgCompressorWorkMessage : AppServiceMessageBase
     {
         [JsonProperty]
-        internal string FilePath { get; set; } = null!;
+        public string FilePath { get; set; } = null!;
     }
 }

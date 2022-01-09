@@ -11,7 +11,6 @@ pool:
 
 variables:
   group: BuildPipelineVariables
-  uwpProject: '**/*.wapproj'
   buildConfiguration: 'Release'
   appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages\\'
   buildFolder: '$(Build.SourcesDirectory)\bin\'
@@ -31,12 +30,12 @@ jobs:
     inputs:
       targetType: 'inline'
       script: |
-        [xml]$xmlDoc = Get-Content $(Build.SourcesDirectory)\src\dev\DevToys.Startup\Package.appxmanifest
+        [xml]$xmlDoc = Get-Content $(Build.SourcesDirectory)\src\dev\impl\DevToys\Package.appxmanifest
         $xmlDoc.Package.Identity.Name="DevToys"
         $xmlDoc.Package.Identity.Publisher="CN=etiennebaudoux"
         $xmlDoc.Package.Properties.DisplayName="DevToys"
         $xmlDoc.Package.Applications.Application.VisualElements.DisplayName="DevToys"
-        $xmlDoc.Save('$(Build.SourcesDirectory)\src\dev\DevToys.Startup\Package.appxmanifest')
+        $xmlDoc.Save('$(Build.SourcesDirectory)\src\dev\impl\DevToys\Package.appxmanifest')
       failOnStderr: true
 
   - task: PowerShell@2
@@ -70,9 +69,27 @@ jobs:
 
   # Builds the msixbundle file
   - task: MSBuild@1
-    displayName: 'Build Sideload package'
+    displayName: 'Build DevToys Sideload package'
     inputs:
-      solution: '$(uwpProject)'
+      solution: '**/DevToys.csproj'
+      platform: 'x86'
+      configuration: '$(buildConfiguration)'
+      msbuildArguments: '/bl:"$(buildFolder)\msbuild.binlog"
+                         /t:build;_GenerateAppxPackage
+                         /restore
+                         /p:AppxBundlePlatforms="$(buildPlatform)"
+                         /p:AppxPackageDir="$(appxPackageDir)"
+                         /p:AppxBundle=Always
+                         /p:UapAppxPackageBuildMode=Sideload
+                         /p:AppxPackageSigningEnabled=true
+                         /p:PackageCertificateKeyFile="$(signingCert.secureFilePath)"
+                         /p:PackageCertificatePassword=""
+                         /p:PackageCertificateThumbprint=""'
+      maximumCpuCount: true
+  - task: MSBuild@1
+    displayName: 'Build DevToys PNG / JPEG Compressor Extension Sideload package'
+    inputs:
+      solution: '**/DevToys.Extension.PngJpegCompressor.Startup.wapproj'
       platform: 'x86'
       configuration: '$(buildConfiguration)'
       msbuildArguments: '/bl:"$(buildFolder)\msbuild.binlog"
@@ -146,12 +163,27 @@ jobs:
 
   # Builds the msixbundle file
   - task: MSBuild@1
-    displayName: 'Build Store package'
+    displayName: 'Build DevToys Store package'
     inputs:
-      solution: '$(uwpProject)'
+      solution: '**/DevToys.csproj'
       platform: 'x86'
       configuration: '$(buildConfiguration)'
-      msbuildArguments: '/bl:"$(buildFolder)\msbuild.binlog"
+      msbuildArguments: '/bl:"$(buildFolder)\DevToys-msbuild.binlog"
+                         /t:build;_GenerateAppxPackage
+                         /restore
+                         /p:AppxBundlePlatforms="$(buildPlatform)"
+                         /p:AppxPackageDir="$(appxPackageDir)"
+                         /p:AppxBundle=Always
+                         /p:UapAppxPackageBuildMode=StoreUpload
+                         /p:AppxPackageSigningEnabled=false'
+      maximumCpuCount: true
+  - task: MSBuild@1
+    displayName: 'Build Build DevToys PNG / JPEG Compressor Extension Store package'
+    inputs:
+      solution: '**/DevToys.Extension.PngJpegCompressor.Startup.wapproj'
+      platform: 'x86'
+      configuration: '$(buildConfiguration)'
+      msbuildArguments: '/bl:"$(buildFolder)\DevToys.Extension.PngJpegCompressor-msbuild.binlog"
                          /t:build;_GenerateAppxPackage
                          /restore
                          /p:AppxBundlePlatforms="$(buildPlatform)"

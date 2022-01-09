@@ -11,7 +11,6 @@ pool:
 
 variables:
   group: BuildPipelineVariables
-  uwpProject: '**/*.wapproj'
   buildPlatform: 'x86|x64|arm64'
   buildConfiguration: 'Release'
   appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages\\'
@@ -37,11 +36,25 @@ jobs:
 
   # Builds the msixbundle file
   - task: MSBuild@1
-    displayName: 'Build UWP AppxBundle'
+    displayName: 'Build DevToys AppxBundle'
     inputs:
-      solution: '$(uwpProject)'
+      solution: '**/DevToys.csproj'
       configuration: '$(buildConfiguration)'
-      msbuildArguments: '/bl:"$(buildFolder)\msbuild.binlog"
+      msbuildArguments: '/bl:"$(buildFolder)\DevToys-msbuild.binlog"
+                         /t:build
+                         /restore
+                         /p:AppxBundlePlatforms="$(buildPlatform)"
+                         /p:AppxPackageDir="$(appxPackageDir)"
+                         /p:AppxPackageSigningEnabled=false
+                         /p:AppxBundle=Always
+                         /p:UapAppxPackageBuildMode=StoreUpload'
+      maximumCpuCount: true
+  - task: MSBuild@1
+    displayName: 'Build Build DevToys PNG / JPEG Compressor Extension AppxBundle'
+    inputs:
+      solution: '**/DevToys.Extension.PngJpegCompressor.Startup.wapproj'
+      configuration: '$(buildConfiguration)'
+      msbuildArguments: '/bl:"$(buildFolder)\DevToys.Extension.PngJpegCompressor-msbuild.binlog"
                          /t:build
                          /restore
                          /p:AppxBundlePlatforms="$(buildPlatform)"

@@ -4,21 +4,23 @@
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
   xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5"
-  IgnorableNamespaces="uap uap5 mp">
+  xmlns:desktop4="http://schemas.microsoft.com/appx/manifest/desktop/windows10/4"
+  IgnorableNamespaces="uap uap3 uap5 mp desktop4">
 
     <!-- Please DO NOT commit changes on the version number below unless you're about to release a new version of the app on the Store. -->
     <Identity
-        Name="f668c062-a3c9-41d6-a9f7-c06fad5f1049"
+        Name="DevToysPreview"
         Publisher="CN=etiennebaudoux"
         Version="0.0.0.0" />
 
     <mp:PhoneIdentity PhoneProductId="f668c062-a3c9-41d6-a9f7-c06fad5f1049" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
     <Properties>
-        <DisplayName>DevToys</DisplayName>
+        <DisplayName>DevToys - Preview</DisplayName>
         <PublisherDisplayName>etiennebaudoux</PublisherDisplayName>
-        <Logo>Assets\Logo\StoreLogo.png</Logo>
+        <Logo>Assets\Logo-Prev\StoreLogo.png</Logo>
     </Properties>
 
     <Dependencies>
@@ -32,14 +34,54 @@
     <Applications>
         <Application Id="App"
           Executable="$targetnametoken$.exe"
-          EntryPoint="DevToys.App">
+          EntryPoint="DevToys.App"
+          desktop4:SupportsMultipleInstances="true">
+
             <uap:VisualElements
-              DisplayName="DevToys"
+              DisplayName="DevToys - Preview"
               Description="A Swiss Army knife for developers."
               BackgroundColor="transparent"
-              Square150x150Logo="Assets\Logo\Square150x150Logo.png"
-              Square44x44Logo="Assets\Logo\Square44x44Logo.png">
+              Square150x150Logo="Assets\Logo-Prev\Square150x150Logo.png"
+              Square44x44Logo="Assets\Logo-Prev\Square44x44Logo.png">
+                <uap:DefaultTile Wide310x150Logo="Assets\Logo-Prev\Wide310x150Logo.png" ShortName="DevToys" Square310x310Logo="Assets\Logo-Prev\LargeTile.png" Square71x71Logo="Assets\Logo-Prev\SmallTile.png">
+                    <uap:ShowNameOnTiles>
+                        <uap:ShowOn Tile="square150x150Logo"/>
+                        <uap:ShowOn Tile="wide310x150Logo"/>
+                        <uap:ShowOn Tile="square310x310Logo"/>
+                    </uap:ShowNameOnTiles>
+                </uap:DefaultTile >
+                <uap:SplashScreen Image="Assets\Logo-Prev\SplashScreen.png" uap5:Optional="true" />
+                <uap:InitialRotationPreference>
+                    <uap:Rotation Preference="landscape"/>
+                    <uap:Rotation Preference="portrait"/>
+                    <uap:Rotation Preference="landscapeFlipped"/>
+                    <uap:Rotation Preference="portraitFlipped"/>
+                </uap:InitialRotationPreference>
             </uap:VisualElements>
+
+            <Extensions>
+                <uap:Extension Category="windows.protocol">
+                    <uap:Protocol ReturnResults="none" Name="devtoys">
+                        <uap:DisplayName>DevToys URI Scheme</uap:DisplayName>
+                        <uap:Logo>Assets\Logo-Prev\Square512.png</uap:Logo>
+                    </uap:Protocol>
+                </uap:Extension>
+
+                <uap:Extension Category="windows.fileOpenPicker">
+                    <uap:FileOpenPicker>
+                        <uap:SupportedFileTypes>
+                            <uap:SupportsAnyFileType/>
+                        </uap:SupportedFileTypes>
+                    </uap:FileOpenPicker>
+                </uap:Extension>
+                
+                <uap3:Extension Category="windows.appExtensionHost">
+                    <uap3:AppExtensionHost>
+                        <uap3:Name>com.devtoys.tool</uap3:Name>
+                    </uap3:AppExtensionHost>
+                </uap3:Extension>
+            </Extensions>
+
         </Application>
     </Applications>
 </Package>

@@ -36,7 +36,6 @@ namespace DevToys
         private readonly MainPageStrings _mainpage = new MainPageStrings();
         private readonly MarkdownPreviewStrings _markdownpreview = new MarkdownPreviewStrings();
         private readonly NumberBaseConverterStrings _numberbaseconverter = new NumberBaseConverterStrings();
-        private readonly PngJpgCompressorStrings _pngjpgcompressor = new PngJpgCompressorStrings();
         private readonly RegExStrings _regex = new RegExStrings();
         private readonly SearchResultStrings _searchresult = new SearchResultStrings();
         private readonly SettingsStrings _settings = new SettingsStrings();
@@ -114,11 +113,6 @@ namespace DevToys
         /// Gets the <see cref="NumberBaseConverterStrings"/>.
         /// </summary>
         public NumberBaseConverterStrings NumberBaseConverter => _numberbaseconverter;
-
-        /// <summary>
-        /// Gets the <see cref="PngJpgCompressorStrings"/>.
-        /// </summary>
-        public PngJpgCompressorStrings PngJpgCompressor => _pngjpgcompressor;
 
         /// <summary>
         /// Gets the <see cref="RegExStrings"/>.
@@ -1110,101 +1104,6 @@ namespace DevToys
         {
             return string.Format(ValueOverflow, param0);
         }
-
-        /// <summary>
-        /// Gets the resource Description.
-        /// </summary>
-        public string Description => _resources.GetString("Description");
-
-        /// <summary>
-        /// Gets the resource SearchDisplayName.
-        /// </summary>
-        public string SearchDisplayName => _resources.GetString("SearchDisplayName");
-    }
-
-    public class PngJpgCompressorStrings : ObservableObject
-    {
-        private readonly ResourceLoader _resources = ResourceLoader.GetForViewIndependentUse("PngJpgCompressor");
-
-        /// <summary>
-        /// Gets the resource AccessibleName.
-        /// </summary>
-        public string AccessibleName => _resources.GetString("AccessibleName");
-
-        /// <summary>
-        /// Gets the resource Cancel.
-        /// </summary>
-        public string Cancel => _resources.GetString("Cancel");
-
-        /// <summary>
-        /// Gets the resource Configuration.
-        /// </summary>
-        public string Configuration => _resources.GetString("Configuration");
-
-        /// <summary>
-        /// Gets the resource Delete.
-        /// </summary>
-        public string Delete => _resources.GetString("Delete");
-
-        /// <summary>
-        /// Gets the resource DeleteAll.
-        /// </summary>
-        public string DeleteAll => _resources.GetString("DeleteAll");
-
-        /// <summary>
-        /// Gets the resource DetailsTitle.
-        /// </summary>
-        public string DetailsTitle => _resources.GetString("DetailsTitle");
-
-        /// <summary>
-        /// Gets the resource MenuDisplayName.
-        /// </summary>
-        public string MenuDisplayName => _resources.GetString("MenuDisplayName");
-
-        /// <summary>
-        /// Gets the resource FileSizeDisplay.
-        /// </summary>
-        public string FileSizeDisplay => _resources.GetString("FileSizeDisplay");
-
-        /// <summary>
-        /// Gets the resource InvalidSelectedFiles.
-        /// </summary>
-        public string InvalidSelectedFiles => _resources.GetString("InvalidSelectedFiles");
-
-        /// <summary>
-        /// Gets the resource OK.
-        /// </summary>
-        public string OK => _resources.GetString("OK");
-
-        /// <summary>
-        /// Gets the resource SaveAll.
-        /// </summary>
-        public string SaveAll => _resources.GetString("SaveAll");
-
-        /// <summary>
-        /// Gets the resource SaveAs.
-        /// </summary>
-        public string SaveAs => _resources.GetString("SaveAs");
-
-        /// <summary>
-        /// Gets the resource SeeErrorMessage.
-        /// </summary>
-        public string SeeErrorMessage => _resources.GetString("SeeErrorMessage");
-
-        /// <summary>
-        /// Gets the resource SelectFilesInstruction1.
-        /// </summary>
-        public string SelectFilesInstruction1 => _resources.GetString("SelectFilesInstruction1");
-
-        /// <summary>
-        /// Gets the resource SelectFilesInstruction2.
-        /// </summary>
-        public string SelectFilesInstruction2 => _resources.GetString("SelectFilesInstruction2");
-
-        /// <summary>
-        /// Gets the resource SelectFilesInstruction3.
-        /// </summary>
-        public string SelectFilesInstruction3 => _resources.GetString("SelectFilesInstruction3");
 
         /// <summary>
         /// Gets the resource Description.

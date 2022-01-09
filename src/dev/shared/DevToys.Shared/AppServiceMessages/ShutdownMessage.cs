@@ -2,7 +2,7 @@
 
 namespace DevToys.OutOfProcService.OutOfProcServices
 {
-    internal class ShutdownMessage : AppServiceMessageBase
+    public class ShutdownMessage : AppServiceMessageBase
     {
     }
 }

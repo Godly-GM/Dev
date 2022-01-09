@@ -7,16 +7,16 @@ namespace DevToys.Shared.Core.Threading
     /// <summary>
     /// Represents a semaphore that free other threads when disposing the result of the <see cref="WaitAsync(CancellationToken)"/> method..
     /// </summary>
-    internal sealed class DisposableSempahore : IDisposable
+    public sealed class DisposableSempahore : IDisposable
     {
         private readonly object _lockObject = new();
         private readonly SemaphoreSlim _semaphore;
 
-        internal bool Disposed { get; private set; }
+        public bool Disposed { get; private set; }
 
-        internal bool IsBusy => _semaphore.CurrentCount == 0;
+        public bool IsBusy => _semaphore.CurrentCount == 0;
 
-        internal DisposableSempahore(int maxTasksCount = 1)
+        public DisposableSempahore(int maxTasksCount = 1)
         {
             _semaphore = new SemaphoreSlim(maxTasksCount, maxTasksCount);
         }
@@ -33,7 +33,7 @@ namespace DevToys.Shared.Core.Threading
             }
         }
 
-        internal async Task<IDisposable> WaitAsync(CancellationToken cancellationToken)
+        public async Task<IDisposable> WaitAsync(CancellationToken cancellationToken)
         {
             await _semaphore.WaitAsync(cancellationToken).ConfigureAwait(false);
 

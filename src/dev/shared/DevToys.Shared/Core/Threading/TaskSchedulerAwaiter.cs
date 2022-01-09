@@ -8,7 +8,7 @@ namespace DevToys.Shared.Core.Threading
     /// <summary>
     /// An awaiter returned from <see cref="GetAwaiter(TaskScheduler)"/>.
     /// </summary>
-    internal readonly struct TaskSchedulerAwaiter : ICriticalNotifyCompletion
+    public readonly struct TaskSchedulerAwaiter : ICriticalNotifyCompletion
     {
         /// <summary>
         /// The scheduler for continuations.
@@ -27,7 +27,7 @@ namespace DevToys.Shared.Core.Threading
         /// <param name="scheduler">The scheduler for continuations.</param>
         /// <param name="alwaysYield">A value indicating whether the caller should yield even if
         /// already executing on the desired task scheduler.</param>
-        internal TaskSchedulerAwaiter(TaskScheduler scheduler, bool alwaysYield = false)
+        public TaskSchedulerAwaiter(TaskScheduler scheduler, bool alwaysYield = false)
         {
             _scheduler = scheduler;
             _alwaysYield = alwaysYield;
@@ -37,7 +37,7 @@ namespace DevToys.Shared.Core.Threading
         /// Gets a value indicating whether no yield is necessary.
         /// </summary>
         /// <value><c>true</c> if the caller is already running on that TaskScheduler.</value>
-        internal bool IsCompleted
+        public bool IsCompleted
         {
             get
             {
@@ -93,7 +93,7 @@ namespace DevToys.Shared.Core.Threading
         /// <summary>
         /// Does nothing.
         /// </summary>
-        internal void GetResult()
+        public void GetResult()
         {
         }
     }

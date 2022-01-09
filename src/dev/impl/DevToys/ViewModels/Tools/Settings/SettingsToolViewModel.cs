@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Composition;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using DevToys.Api.Core.Navigation;
@@ -19,6 +20,7 @@ using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.DataTransfer;
+using Windows.Foundation.Collections;
 using Windows.Services.Store;
 using Clipboard = Windows.ApplicationModel.DataTransfer.Clipboard;
 
@@ -137,16 +139,26 @@ namespace DevToys.ViewModels.Settings
 
         internal IRelayCommand CopyVersionCommand { get; }
 
-        private void ExecuteCopyVersionCommand()
+        private ExtensionManager _extensionManager;
+        private async void ExecuteCopyVersionCommand()
         {
-            var data = new DataPackage
-            {
-                RequestedOperation = DataPackageOperation.Copy
-            };
-            data.SetText(Version);
+            _extensionManager = _extensionManager ?? new ExtensionManager();
+            // The contract that I've specified for math extensions is to expect arguments labeled arg1, arg2.
+            ValueSet message = new ValueSet();
+            message.Add("message", Double.Parse("123"));
+            message.Add("arg2", Double.Parse("456"));
 
-            Clipboard.SetContentWithOptions(data, new ClipboardContentOptions() { IsAllowedInHistory = true, IsRoamable = true });
-            Clipboard.Flush();
+            await Task.Delay(1000);
+            await _extensionManager.Extensions.First().Invoke(message);
+
+            //var data = new DataPackage
+            //{
+            //    RequestedOperation = DataPackageOperation.Copy
+            //};
+            //data.SetText(Version);
+
+            //Clipboard.SetContentWithOptions(data, new ClipboardContentOptions() { IsAllowedInHistory = true, IsRoamable = true });
+            //Clipboard.Flush();
         }
 
         #endregion

@@ -3,18 +3,18 @@ using Newtonsoft.Json;
 
 namespace DevToys.Shared.AppServiceMessages.PngJpgCompressor
 {
-    internal sealed class PngJpgCompressorWorkResultMessage : AppServiceMessageBase
+    public sealed class PngJpgCompressorWorkResultMessage : AppServiceMessageBase
     {
         [JsonProperty]
-        internal string? ErrorMessage { get; set; }
+        public string? ErrorMessage { get; set; }
 
         [JsonProperty]
-        internal long NewFileSize { get; set; }
+        public long NewFileSize { get; set; }
 
         [JsonProperty]
-        internal double PercentageSaved { get; set; }
+        public double PercentageSaved { get; set; }
 
         [JsonProperty]
-        internal string TempCompressedFilePath { get; set; } = string.Empty;
+        public string TempCompressedFilePath { get; set; } = string.Empty;
     }
 }

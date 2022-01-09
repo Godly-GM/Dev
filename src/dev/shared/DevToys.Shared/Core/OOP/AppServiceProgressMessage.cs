@@ -7,9 +7,9 @@ namespace DevToys.Shared.Core.OOP
     public sealed class AppServiceProgressMessage : AppServiceMessageBase
     {
         [JsonProperty]
-        internal int ProgressPercentage { get; set; }
+        public int ProgressPercentage { get; set; }
 
         [JsonProperty]
-        internal string? Message { get; set; }
+        public string? Message { get; set; }
     }
 }
